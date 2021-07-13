@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Profile</title>
+    <style>
+    .success{ 
+      color:green; 
+      font-size: large;
+      font-weight: bold;
+      }
+    </style>
+</head>
+<body>
+    <h1>profile page</h1>
+    <p>Welcome!, {{ name }}</p>
+    {% if messages %}
+    {% for msg in messages %}
+      <small class='{{ msg.tags }}'>{{ msg }}</small>
+    {% endfor %}
+    {% endif %}
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="submit">
+    </form>
+    <!-- {% if messages %}
+    {% for msg in messages %}
+     <small class = "{{ msg.tags }}" >{{ msg }}</small>
+    {% endfor %}
+    {% endif %} -->
+    <a href="{% url 'to_logout' %}">LogOut</a>
+    <a href="{% url 'to_change' %}">Change Password</a>
+    <a href="{% url 'to_change1' %}">Change Password 1</a>
+</body>
+</html>
